@@ -92,4 +92,13 @@ async def on_message(message):
         await message.channel.send( str( success ) + " successes and " + str( failure ) + " traitors rolled" )
         await message.channel.send( roll_list )
 
+# Red Markets good/bad roll
+    if message.content.startswith( '/rollgb' ):
+        mod = int( message.content.strip( '/rollgb' ) )
+        good = roll_many( 1 , 10 ) + mod
+        bad = roll_many( 1 , 10 )
+        result = good-bad
+    await message.channel.send( result + " successes" )
+
+
 client.run(token)
